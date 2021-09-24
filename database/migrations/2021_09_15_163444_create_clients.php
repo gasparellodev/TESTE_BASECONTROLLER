@@ -45,7 +45,7 @@ class CreateClients extends Migration
             $table -> bigInteger('user_group_id') -> unsigned();
             $table -> timestamps();
 
-           //$table -> foreign('user_group_id') -> references('group_id') -> on('users_group');
+            //$table -> foreign('user_group_id') -> references('users_group') -> on('group_id');
 
         });
     }

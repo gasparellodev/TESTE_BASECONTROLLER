@@ -7,10 +7,10 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+// use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
+class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -19,26 +19,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
+    protected $table = 'users';
+    protected $primaryKey = 'users_id';
     protected $fillable = [
-        'username', 'type'
+        'username', 'type', 'user_group_id', 'password'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
 
-    public function getJWTIdentifier()
-    {
-        return $this -> getKey();
-    }
+    // public function getJWTIdentifier()
+    // {
+    //     return $this -> getKey();
+    // }
 
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
+    // public function getJWTCustomClaims()
+    // {
+    //     return [];
+    // }
 }

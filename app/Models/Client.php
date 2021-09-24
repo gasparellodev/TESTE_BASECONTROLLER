@@ -4,6 +4,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
+    protected $table = 'clients';
+    protected $primaryKey = 'client_id';
     protected $fillable = [
         'external_id',
         'integration_id',
@@ -30,7 +32,20 @@ class Client extends Model
         'email1',
         'email2',
         'info',
+        'user_group_id',
         'working_days',
         'contract',
     ];
+
+    public function users(){
+        
+        return $this -> hasMany(User::class, 'client_users', 'client_id', 'user_id');
+        
+    }
+
+    public function getTableColumns() {
+
+        return $this -> getConnection() -> getSchemaBuilder() -> getColumnListing($this -> getTable());
+
+    }
 }

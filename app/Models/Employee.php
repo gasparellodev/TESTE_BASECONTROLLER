@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+    protected $table = 'employees';
+    protected $primaryKey = 'employee_id';
     protected $fillable = [
         'user_id',
         'user_group_id',

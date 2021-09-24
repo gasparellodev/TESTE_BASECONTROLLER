@@ -5,7 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 Class Activity extends Model {
 
-
+    protected $table = 'activities';    
+    protected $primaryKey = 'activity_id';
     protected $fillable = [
         'task_id',
         'title',
